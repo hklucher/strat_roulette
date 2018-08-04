@@ -1,8 +1,14 @@
 defmodule StratRouletteTest do
-  use ExUnit.Case
-  doctest StratRoulette
+  alias StratRoulette.Strat
 
-  test "greets the world" do
-    assert StratRoulette.hello() == :world
+  use ExUnit.Case
+
+  doctest StratRoulette
+  
+  describe "random_attack_strat" do
+    test "returns a strat" do
+      strat = StratRoulette.random_attack_strat()
+      assert %Strat{} = strat
+    end
   end
 end
