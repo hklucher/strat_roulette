@@ -99,6 +99,15 @@ defmodule StratRoulette do
     }
   ]
 
+  def random_strat(%{team: team, game_type: game_type}) do
+    IO.puts game_type
+    @strats
+    |> Enum.filter(fn strat ->
+      strat.team == team  && Enum.member?(strat.game_types, game_type)
+    end)
+    |> Enum.random()
+  end
+
   def random_strat(%{team: team}) do
     @strats
     |> Enum.filter(fn strat -> strat.team == team end)

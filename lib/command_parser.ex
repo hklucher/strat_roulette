@@ -18,10 +18,10 @@ defmodule StratRoulette.CommandParser do
   end
 
   defp do_parse([team]) do
-    %{team: team}
+    %{team: String.downcase(team)}
   end
 
   defp do_parse([team, game_type]) do
-    %{team: team, game_type: game_type}
+    %{team: String.downcase(team), game_type: String.downcase(game_type)}
   end
 end
