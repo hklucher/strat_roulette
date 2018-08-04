@@ -8,7 +8,7 @@ defmodule StratRoulette do
   @strats [
     %Strat{
       name: "John Wayne",
-      description: "All pick a GIGN recuirt with a ballistic shield, revolver, breach charges and frag grenade. As soon as you spawn, press 1 to get your shield in your back and wield your revolver like a treo hero.",
+      description: "All pick a GIGN recruit with a ballistic shield, revolver, breach charges and frag grenade. As soon as you spawn, press 1 to get your shield in your back and wield your revolver like a treo hero.",
       team: "attack",
       game_types: ["bomb", "hostage", "secure"],
     },
@@ -99,7 +99,9 @@ defmodule StratRoulette do
     }
   ]
 
-  def random_attack_strat do
-    %Strat{}
+  def random_strat(%{team: team}) do
+    @strats
+    |> Enum.filter(fn strat -> strat.team == team end)
+    |> Enum.random()
   end
 end

@@ -6,7 +6,25 @@ defmodule StratRoulette.Bot do
   defmodule Commands do
     use Alchemy.Cogs
 
-    Cogs.def strat do
+    Cogs.set_parser(:strat, &List.wrap/1)
+    Cogs.def strat(content) do
+      details = StratRoulette.CommandParser.parse(content)
+
+      IO.inspect StratRoulette.random_strat(details)
+      # Pass content to CommandParser
+      # CommandParser converts to array
+      # Returns array for args
+      #
+      # CommandParser.parse("attack secure")
+      # %{team: "defense", game_type: "secure"}
+      #
+      # CommandParser.parse("")
+      # %{team: "attack", game_type: "bomb"}
+
+      # !strat attack bomb
+      # IF team is nil, default to attack
+      # IF game_type is nil, default to bomb
+
       Cogs.say("I'd give you a strat here...IF I HAD ONE.")
     end
   end
