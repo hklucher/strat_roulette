@@ -9,14 +9,19 @@ defmodule StratRoulette.StratTest do
     strat = %Strat{name: "Test Strat"}
     assert strat.name == "Test Strat"
   end
-  
+
   test "has a description" do
     strat = %Strat{description: "Description"}
     assert strat.description == "Description"
   end
 
-  test "type" do
-    strat = %Strat{type: "attack"}
-    assert strat.type == "attack"
+  test "has a team" do
+    strat = %Strat{team: "attack"}
+    assert strat.team == "attack"
+  end
+
+  test "has game_types" do
+    strat = %Strat{game_types: ["hostage"]}
+    assert strat.game_types == ["hostage"]
   end
 end
